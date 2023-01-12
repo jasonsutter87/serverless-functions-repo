@@ -15,6 +15,7 @@
   <button id="fetch-btn">Fetch</button>
   <button id="fetch-kanto-btn">Fetch Kanto Pokedex</button>
   <button id="fetch-hoenn-btn">Fetch Hoenn Pokedex</button>
+  <button id="fetch-activities-btn">Activities</button>
   <p id="response-output">Response Placeholder</p>
 
   <script>
@@ -23,6 +24,7 @@
       const responseText = document.getElementById('response-output')
       const fetchKantoBtn = document.getElementById('fetch-kanto-btn')
       const fetchHoennBtn = document.getElementById('fetch-hoenn-btn')
+      const fetchActivitiesBtn = document.getElementById('fetch-activities-btn')
 
       fetchKantoBtn.addEventListener('click', async () => {
         const response = await fetch('/.netlify/functions/pokedex', {
@@ -50,6 +52,13 @@
 
       fetchBtn.addEventListener('click', async () => {
         const response = await fetch('/.netlify/functions/hello-world').then(response => response.json()
+        )
+
+        responseText.innerText = JSON.stringify(response)
+      })
+
+      fetchActivitiesBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/get-activities').then(response => response.json()
         )
 
         responseText.innerText = JSON.stringify(response)
